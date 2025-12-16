@@ -6,7 +6,7 @@ points:
   zones:
     left_matrix:
       anchor:
-        shift: [10, -100]
+        shift: [100, -100]
       columns:
         pinky:
           key:
@@ -85,8 +85,8 @@ points:
 
     left_reset:
       anchor:
-        ref: left_matrix_inner_bottom
-        shift: [20, 0]
+        ref: left_matrix_inner_home
+        shift: [35, -15]
       columns:
         reset:
           key:
@@ -98,7 +98,7 @@ points:
 
     right_matrix:
       anchor:
-        shift: [250, -100]
+        shift: [100, -100]
       columns:
         inner:
           key:
@@ -180,8 +180,8 @@ points:
 
     right_reset:
       anchor:
-        ref: right_matrix_inner_bottom
-        shift: [-20, 0]
+        ref: right_matrix_inner_home
+        shift: [-35, -15]
       columns:
         reset:
           key:
@@ -260,15 +260,7 @@ outlines:
           shift: [-12, 0]
         - ref: right_trrs_trrs_only
           shift: [-12, 0]
-        # Connect to thumb cluster - go right first, then to thumbs
-        # - ref: left_thumb_outer_thumb
-        #   shift: [0, 0]
-        # - ref: left_thumb_outer_thumb
-        #   shift: [0, 0]
-        # - ref: left_thumb_inner_thumb
-        #   shift: [0, 0]
-        # - ref: left_thumb_inner_thumb
-        #   shift: [0, 0]
+        # Thumb cluster
         - ref: right_thumb_inner_thumb
           shift: [-0.5ky - 5, -0.5ky - 5]
         - ref: right_thumb_inner_thumb
@@ -277,26 +269,26 @@ outlines:
           shift: [0.5ky + 5, -0.5ky - 5]
         # Back up pinky column
         - ref: right_matrix_pinky_bottom
-          shift: [0.5kx + 5, -0.5ky - 5]
+          shift: [0.5ky + 5, -0.5ky - 5]
       fillet: 3
 
   left_combo:
     - name: left_plate
     - operation: subtract
-      name: _switch_cutouts
+      what: rectangle
       where:
-        - /left_.*/
+        - /left_matrix_.*/
+        - /left_thumb_.*/
+      size: [13.8, 13.8]
 
   right_combo:
     - name: right_plate
     - operation: subtract
-      name: _switch_cutouts
+      what: rectangle
       where:
-        - /right_.*/
-
-  preview:
-    - name: left_plate
-    - name: right_plate
+        - /right_matrix_.*/
+        - /right_thumb_.*/
+      size: [13.8, 13.8]
 
 pcbs:
   left_pcb:
@@ -450,4 +442,5 @@ pcbs:
         params:
           from: GND
           to: RST
+
 
