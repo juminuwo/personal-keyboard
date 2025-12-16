@@ -1,0 +1,10 @@
+# Node
+node_modules/
+package-lock.json
+
+# Ergogen output
+output/
+
+# OS files
+.DS_Store
+Thumbs.db

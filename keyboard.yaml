@@ -1,0 +1,453 @@
+units:
+  kx: 17
+  ky: 16
+
+points:
+  zones:
+    left_matrix:
+      anchor:
+        shift: [10, -100]
+      columns:
+        pinky:
+          key:
+            column_net: L_C0
+        ring:
+          key:
+            stagger: 5
+            column_net: L_C1
+        middle:
+          key:
+            stagger: 2.5
+            column_net: L_C2
+        index:
+          key:
+            stagger: -2.5
+            column_net: L_C3
+        inner:
+          key:
+            stagger: -2.5
+            column_net: L_C4
+      rows:
+        bottom:
+          row_net: L_R0
+        home:
+          row_net: L_R1
+        top:
+          row_net: L_R2
+
+    left_thumb:
+      anchor:
+        ref: left_matrix_index_bottom
+        shift: [1kx, -27]
+      columns:
+        outer:
+          key:
+            splay: -10
+            column_net: L_T0
+        inner:
+          key:
+            splay: -5
+            shift: [2, -1]
+            column_net: L_T1
+      rows:
+        thumb:
+          row_net: L_R3
+
+    # MCU and TRRS placement for left half
+    # MCU rotated 90 anticlockwise, USB facing up
+    left_mcu:
+      anchor:
+        ref: left_matrix_inner_home
+        shift: [30, 8]
+        rotate: -90
+      columns:
+        mcu:
+          key:
+            tags:
+              mcu: true
+              keys: false
+      rows:
+        only:
+
+    left_trrs:
+      anchor:
+        ref: left_matrix_inner_bottom
+        shift: [35, -5]
+        rotate: -90
+      columns:
+        trrs:
+          key:
+            tags:
+              trrs: true
+              keys: false
+      rows:
+        only:
+
+    left_reset:
+      anchor:
+        ref: left_matrix_inner_bottom
+        shift: [20, 0]
+      columns:
+        reset:
+          key:
+            tags:
+              reset: true
+              keys: false
+      rows:
+        only:
+
+    right_matrix:
+      anchor:
+        shift: [250, -100]
+      columns:
+        inner:
+          key:
+            stagger: 2.5
+            column_net: R_C0
+        index:
+          key:
+            stagger: 2.5
+            column_net: R_C1
+        middle:
+          key:
+            stagger: -2.5
+            column_net: R_C2
+        ring:
+          key:
+            stagger: -5
+            column_net: R_C3
+        pinky:
+          key:
+            column_net: R_C4
+          rows:
+            top:
+              skip: true
+      rows:
+        bottom:
+          row_net: R_R0
+        home:
+          row_net: R_R1
+        top:
+          row_net: R_R2
+
+    right_thumb:
+      anchor:
+        ref: right_matrix_index_bottom
+        shift: [-1kx, -27]
+      columns:
+        outer:
+          key:
+            splay: 10
+            column_net: R_T0
+        inner:
+          key:
+            splay: 5
+            shift: [-40, 2]
+            column_net: R_T1
+      rows:
+        thumb:
+          row_net: R_R3
+
+    # MCU and TRRS placement for right half
+    # MCU rotated 270 clockwise (90 + 180), USB facing up
+    right_mcu:
+      anchor:
+        ref: right_matrix_inner_home
+        shift: [-30, 8]
+        rotate: 270
+      columns:
+        mcu:
+          key:
+            tags:
+              mcu: true
+              keys: false
+      rows:
+        only:
+
+    right_trrs:
+      anchor:
+        ref: right_matrix_inner_bottom
+        shift: [-35, -5]
+        rotate: 90
+      columns:
+        trrs:
+          key:
+            tags:
+              trrs: true
+              keys: false
+      rows:
+        only:
+
+    right_reset:
+      anchor:
+        ref: right_matrix_inner_bottom
+        shift: [-20, 0]
+      columns:
+        reset:
+          key:
+            tags:
+              reset: true
+              keys: false
+      rows:
+        only:
+
+  key:
+    padding: 1.5kx
+    tags:
+      keys: true
+
+outlines:
+  _raw_keys:
+    - what: rectangle
+      where: true
+      size: [kx - 0.5, ky - 0.5]
+
+  _switch_cutouts:
+    - what: rectangle
+      where: true
+      size: [13.8, 13.8]
+
+  left_plate:
+    - what: polygon
+      points:
+        # Top left corner
+        - ref: left_matrix_pinky_top
+          shift: [-0.5kx - 5, 0.5ky + 5]
+        # Top edge following stagger
+        - ref: left_matrix_middle_top
+          shift: [0, 0.5ky + 5]
+        - ref: left_matrix_inner_top
+          shift: [0.5kx + 5, 0.5ky + 5]
+        # MCU/TRRS rectangle - top left corner
+        - ref: left_mcu_mcu_only
+          shift: [-20, 12]
+        # MCU/TRRS rectangle - top right corner
+        - ref: left_mcu_mcu_only
+          shift: [20, 12]
+        # MCU/TRRS rectangle - bottom right, extend down to cover TRRS
+        # Transition to thumb cluster
+        - ref: left_thumb_inner_thumb
+          shift: [0.5kx + 5, 0.5ky + 5]
+        - ref: left_thumb_inner_thumb
+          shift: [0.5kx + 5, -0.5ky - 5]
+        - ref: left_thumb_outer_thumb
+          shift: [0.5kx + 5, -0.5ky - 5]
+        - ref: left_thumb_outer_thumb
+          shift: [-0.5kx - 5, -0.5ky - 5]
+        # Back up pinky column
+        - ref: left_matrix_pinky_bottom
+          shift: [-0.5kx - 5, -0.5ky - 5]
+      fillet: 3
+
+  right_plate:
+    - what: polygon
+      points:
+        # Top edge - pinky to inner
+        - ref: right_matrix_pinky_home
+          shift: [0.5kx + 5, 0.5ky + 5]
+        - ref: right_matrix_ring_top
+          shift: [0.5kx + 5, 0.5ky + 5]
+        - ref: right_matrix_middle_top
+          shift: [0, 0.5ky + 5]
+        - ref: right_matrix_inner_top
+          shift: [-0.5kx - 5, 0.5ky + 5]
+        # MCU/TRRS left edge - straight down
+        - ref: right_mcu_mcu_only
+          shift: [-20, -12]
+        - ref: right_mcu_mcu_only
+          shift: [20, -12]
+        - ref: right_trrs_trrs_only
+          shift: [-12, 0]
+        - ref: right_trrs_trrs_only
+          shift: [-12, 0]
+        # Connect to thumb cluster - go right first, then to thumbs
+        # - ref: left_thumb_outer_thumb
+        #   shift: [0, 0]
+        # - ref: left_thumb_outer_thumb
+        #   shift: [0, 0]
+        # - ref: left_thumb_inner_thumb
+        #   shift: [0, 0]
+        # - ref: left_thumb_inner_thumb
+        #   shift: [0, 0]
+        - ref: right_thumb_inner_thumb
+          shift: [-0.5ky - 5, -0.5ky - 5]
+        - ref: right_thumb_inner_thumb
+          shift: [0.5ky + 5, -0.5ky - 5]
+        - ref: right_thumb_outer_thumb
+          shift: [0.5ky + 5, -0.5ky - 5]
+        # Back up pinky column
+        - ref: right_matrix_pinky_bottom
+          shift: [0.5kx + 5, -0.5ky - 5]
+      fillet: 3
+
+  left_combo:
+    - name: left_plate
+    - operation: subtract
+      name: _switch_cutouts
+      where:
+        - /left_.*/
+
+  right_combo:
+    - name: right_plate
+    - operation: subtract
+      name: _switch_cutouts
+      where:
+        - /right_.*/
+
+  preview:
+    - name: left_plate
+    - name: right_plate
+
+pcbs:
+  left_pcb:
+    outlines:
+      main:
+        outline: left_plate
+        layer: Edge.Cuts
+    footprints:
+      # Switches with proper matrix wiring
+      switches:
+        what: choc
+        where:
+          - /left_matrix_.*/
+          - /left_thumb_.*/
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{row_net}}"
+
+      # Diodes for matrix scanning (one per switch)
+      diodes:
+        what: diode
+        where:
+          - /left_matrix_.*/
+          - /left_thumb_.*/
+        adjust:
+          shift: [0, -5]
+        params:
+          from: "{{row_net}}"
+          to: "{{column_net}}"
+
+      # Pro Micro compatible MCU
+      mcu:
+        what: promicro
+        where:
+          ref: left_mcu_mcu_only
+        params:
+          orientation: up
+          # Left side pin assignments
+          P1: L_C0
+          P0: L_C1
+          P2: L_C2
+          P3: L_C3
+          P4: L_C4
+          P5: L_T0
+          P6: L_T1
+          P7: L_R0
+          P8: L_R1
+          P9: L_R2
+          P10: L_R3
+          RAW: VCC
+          GND: GND
+          # Serial for TRRS
+          P14: SERIAL
+
+      # TRRS jack for split communication
+      trrs:
+        what: trrs
+        where:
+          ref: left_trrs_trrs_only
+        params:
+          reverse: true
+          A: GND
+          B: GND
+          C: SERIAL
+          D: VCC
+
+      # Reset button
+      reset:
+        what: button
+        where:
+          ref: left_reset_reset_only
+        params:
+          from: GND
+          to: RST
+
+  right_pcb:
+    outlines:
+      main:
+        outline: right_plate
+        layer: Edge.Cuts
+    footprints:
+      # Switches with proper matrix wiring
+      switches:
+        what: choc
+        where:
+          - /right_matrix_.*/
+          - /right_thumb_.*/
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{row_net}}"
+
+      # Diodes for matrix scanning (one per switch)
+      diodes:
+        what: diode
+        where:
+          - /right_matrix_.*/
+          - /right_thumb_.*/
+        adjust:
+          shift: [0, -5]
+        params:
+          from: "{{row_net}}"
+          to: "{{column_net}}"
+
+      # Pro Micro compatible MCU
+      mcu:
+        what: promicro
+        where:
+          ref: right_mcu_mcu_only
+        params:
+          orientation: up
+          # Right side pin assignments
+          P1: R_C0
+          P0: R_C1
+          P2: R_C2
+          P3: R_C3
+          P4: R_C4
+          P5: R_T0
+          P6: R_T1
+          P7: R_R0
+          P8: R_R1
+          P9: R_R2
+          P10: R_R3
+          RAW: VCC
+          GND: GND
+          # Serial for TRRS
+          P14: SERIAL
+
+      # TRRS jack for split communication
+      trrs:
+        what: trrs
+        where:
+          ref: right_trrs_trrs_only
+        params:
+          reverse: true
+          A: GND
+          B: GND
+          C: SERIAL
+          D: VCC
+
+      # Reset button
+      reset:
+        what: button
+        where:
+          ref: right_reset_reset_only
+        params:
+          from: GND
+          to: RST
+
