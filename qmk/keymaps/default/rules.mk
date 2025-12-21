@@ -1,0 +1,6 @@
+# Enable features
+TRI_LAYER_ENABLE = yes
+COMBO_ENABLE = yes
+MOUSEKEY_ENABLE = yes
+SPLIT_KEYBOARD = yes
+SERIAL_DRIVER = vendor
