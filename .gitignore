@@ -1,10 +1,24 @@
 # Node
 node_modules/
 package-lock.json
+package.json
 
 # Ergogen output
-output/
+output/*
+!output/pcbs/
+output/pcbs/*
+!output/pcbs/left_pcb.kicad_pcb
+!output/pcbs/left_pcb.kicad_prl
+!output/pcbs/left_pcb.kicad_pro
+!output/pcbs/right_pcb.kicad_pcb
+!output/pcbs/right_pcb.kicad_prl
+!output/pcbs/right_pcb.kicad_pro
+!output/pcbs/gerbers-left.zip
+!output/pcbs/gerbers-right.zip
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# kicad backups
+personal_keyboard-backups/

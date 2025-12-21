@@ -1,6 +1,6 @@
 units:
-  kx: 17
-  ky: 16
+  kx: 18
+  ky: 17
 
 points:
   zones:
@@ -258,18 +258,16 @@ outlines:
           shift: [20, -12]
         - ref: right_trrs_trrs_only
           shift: [-12, 0]
-        - ref: right_trrs_trrs_only
-          shift: [-12, 0]
         # Thumb cluster
         - ref: right_thumb_inner_thumb
-          shift: [-0.5ky - 5, -0.5ky - 5]
+          shift: [-0.5kx - 5, -0.5ky - 5]
         - ref: right_thumb_inner_thumb
-          shift: [0.5ky + 5, -0.5ky - 5]
+          shift: [0.5kx + 5, -0.5ky - 5]
         - ref: right_thumb_outer_thumb
-          shift: [0.5ky + 5, -0.5ky - 5]
+          shift: [0.5kx + 5, -0.5ky - 5]
         # Back up pinky column
         - ref: right_matrix_pinky_bottom
-          shift: [0.5ky + 5, -0.5ky - 5]
+          shift: [0.5kx + 5, -0.5ky - 5]
       fillet: 3
 
   left_combo:
@@ -305,7 +303,7 @@ pcbs:
           - /left_thumb_.*/
         params:
           keycaps: true
-          reverse: true
+          reverse: false
           hotswap: true
           from: "{{column_net}}"
           to: "{{row_net}}"
@@ -352,7 +350,7 @@ pcbs:
         where:
           ref: left_trrs_trrs_only
         params:
-          reverse: true
+          reverse: false
           A: GND
           B: GND
           C: SERIAL
@@ -381,7 +379,7 @@ pcbs:
           - /right_thumb_.*/
         params:
           keycaps: true
-          reverse: true
+          reverse: false
           hotswap: true
           from: "{{column_net}}"
           to: "{{row_net}}"
@@ -405,18 +403,18 @@ pcbs:
           ref: right_mcu_mcu_only
         params:
           orientation: up
-          # Right side pin assignments
-          P1: R_C0
-          P0: R_C1
-          P2: R_C2
-          P3: R_C3
-          P4: R_C4
-          P5: R_T0
-          P6: R_T1
-          P7: R_R0
+          # Right side pin assignments - optimized for routing
+          P21: R_C0
+          P20: R_C1
+          P19: R_C2
+          P18: R_C3
+          P15: R_C4
+          P16: R_T0
+          P10: R_T1
+          P9: R_R0
           P8: R_R1
-          P9: R_R2
-          P10: R_R3
+          P7: R_R2
+          P6: R_R3
           RAW: VCC
           GND: GND
           # Serial for TRRS
@@ -428,7 +426,7 @@ pcbs:
         where:
           ref: right_trrs_trrs_only
         params:
-          reverse: true
+          reverse: false
           A: GND
           B: GND
           C: SERIAL
