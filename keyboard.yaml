@@ -142,7 +142,7 @@ points:
         inner:
           key:
             splay: 5
-            shift: [-40, 2]
+            shift: [-38, 2]
             column_net: R_T1
       rows:
         thumb:
@@ -192,7 +192,8 @@ points:
         only:
 
   key:
-    padding: 1.5kx
+    spread: kx
+    padding: ky
     tags:
       keys: true
 
