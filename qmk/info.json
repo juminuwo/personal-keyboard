@@ -2,6 +2,7 @@
     "manufacturer": "Custom",
     "keyboard_name": "Personal Split 33",
     "maintainer": "juminuwo",
+    "board": "GENERIC_RP_RP2040",
     "bootloader": "rp2040",
     "diode_direction": "COL2ROW",
     "features": {
@@ -14,7 +15,7 @@
     },
     "matrix_pins": {
         "cols": ["GP1", "GP0", "GP2", "GP3", "GP4", "GP5", "GP6"],
-        "rows": ["GP7", "GP8", "GP9", "GP10"]
+        "rows": ["GP9", "GP8", "GP7", "GP10"]
     },
     "processor": "RP2040",
     "split": {

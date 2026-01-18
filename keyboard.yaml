@@ -83,19 +83,6 @@ points:
       rows:
         only:
 
-    left_reset:
-      anchor:
-        ref: left_matrix_inner_home
-        shift: [35, -15]
-      columns:
-        reset:
-          key:
-            tags:
-              reset: true
-              keys: false
-      rows:
-        only:
-
     right_matrix:
       anchor:
         shift: [100, -100]
@@ -174,19 +161,6 @@ points:
           key:
             tags:
               trrs: true
-              keys: false
-      rows:
-        only:
-
-    right_reset:
-      anchor:
-        ref: right_matrix_inner_home
-        shift: [-35, -15]
-      columns:
-        reset:
-          key:
-            tags:
-              reset: true
               keys: false
       rows:
         only:
@@ -307,9 +281,10 @@ pcbs:
           reverse: false
           hotswap: true
           from: "{{column_net}}"
-          to: "{{row_net}}"
+          to: "{{name}}"
 
       # Diodes for matrix scanning (one per switch)
+      # COL2ROW: Cathode (from) → Row, Anode (to) → Switch/Intermediate
       diodes:
         what: diode
         where:
@@ -319,7 +294,7 @@ pcbs:
           shift: [0, -5]
         params:
           from: "{{row_net}}"
-          to: "{{column_net}}"
+          to: "{{name}}"
 
       # Pro Micro compatible MCU
       mcu:
@@ -357,15 +332,6 @@ pcbs:
           C: SERIAL
           D: VCC
 
-      # Reset button
-      reset:
-        what: button
-        where:
-          ref: left_reset_reset_only
-        params:
-          from: GND
-          to: RST
-
   right_pcb:
     outlines:
       main:
@@ -383,9 +349,10 @@ pcbs:
           reverse: false
           hotswap: true
           from: "{{column_net}}"
-          to: "{{row_net}}"
+          to: "{{name}}"
 
       # Diodes for matrix scanning (one per switch)
+      # COL2ROW: Cathode (from) → Row, Anode (to) → Switch/Intermediate
       diodes:
         what: diode
         where:
@@ -395,7 +362,7 @@ pcbs:
           shift: [0, -5]
         params:
           from: "{{row_net}}"
-          to: "{{column_net}}"
+          to: "{{name}}"
 
       # Pro Micro compatible MCU
       mcu:
@@ -412,9 +379,9 @@ pcbs:
           P15: R_C4
           P16: R_T0
           P10: R_T1
-          P9: R_R0
+          P9: R_R2
           P8: R_R1
-          P7: R_R2
+          P7: R_R0
           P6: R_R3
           RAW: VCC
           GND: GND
@@ -432,14 +399,5 @@ pcbs:
           B: GND
           C: SERIAL
           D: VCC
-
-      # Reset button
-      reset:
-        what: button
-        where:
-          ref: right_reset_reset_only
-        params:
-          from: GND
-          to: RST
 
 

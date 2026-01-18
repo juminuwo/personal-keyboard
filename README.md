@@ -55,6 +55,7 @@ Left Hand (17 keys)                    Right Hand (16 keys)
 
 ### Column Stagger
 
+**Left Hand:**
 | Finger | Stagger |
 |--------|---------|
 | Pinky | 0mm (baseline) |
@@ -62,6 +63,15 @@ Left Hand (17 keys)                    Right Hand (16 keys)
 | Middle | +2.5mm |
 | Index | -2.5mm |
 | Inner | -2.5mm |
+
+**Right Hand (intentionally different due to hand injury):**
+| Finger | Stagger |
+|--------|---------|
+| Inner | +2.5mm |
+| Index | +2.5mm |
+| Middle | -2.5mm |
+| Ring | -5mm |
+| Pinky | 0mm (baseline) |
 
 ### Thumb Cluster
 
